@@ -1,4 +1,4 @@
-docker build -f ./assigment2/Dockerfile -t go-server:v1 .
+docker build -f Dockerfile.single -t go-server:v1 .
 docker run --name go-app -p 8080:8080 go-server:v1
 curl http://localhost:8080
 docker login

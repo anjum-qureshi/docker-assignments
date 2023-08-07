@@ -1,4 +1,4 @@
-docker build -f ./assigment3/Dockerfile -t go-server:v2 .
+docker build -f Dockerfile.multi -t go-server:v2 .
 docker run --name go-app-v2 -p 8080:8080 go-server:v2
 curl http://localhost:8080
 docker push go-server:v2

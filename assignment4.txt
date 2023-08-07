@@ -1,0 +1,9 @@
+docker volume create my_volume
+docker container run -it -v my_volume:/my-data --name apline-server1 alpine /bin/sh
+cd my-data
+echo "magic happens here!! don't see" > sample.txt
+ls output sample.txt
+docker container run -it -v my_volume:/my-data --name apline-server2 alpine /bin/sh
+cd my-data/
+/my-data # ls
+sample.txt

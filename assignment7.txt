@@ -1,0 +1,9 @@
+pull golang-redis code
+cd go-app
+gco redis
+
+docker-compose -f .docker-compose.yml up -d --force-recreate --build --remove-orphans
+
+curl http://localhost:8080/vote
+
+docker-compose down

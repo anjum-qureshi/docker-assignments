@@ -1,0 +1,18 @@
+pull golang-redis code
+cd go-app
+gco redis
+
+docker run redis
+docker container ls
+6efb8d84fcc1   redis                        "docker-entrypoint.s…"   44 seconds ago       Up 42 seconds       6379/tcp   objective_kilby
+
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 6efb8d84fcc1
+172.17.0.2
+
+docker build -f Dockerfile.multi -t go-server-redis:v1 .
+docker run --name go-app-redis -e REDIS_HOST=172.17.0.2 -p 8080:8080 go-server-redis:v1
+2023/08/07 14:11:07 listen on :8080
+
+curl http://localhost:8080/vote
+total votes 1
+
